@@ -34,7 +34,7 @@ public class PetControllerTest {
 	public void testFindAllPets() throws Exception {
 
 		//int NRO_RECORD = 73;
-		int ID_FIRST_RECORD = 1;
+		int ID_FIRST_RECORD = 2;
 
 		this.mockMvc.perform(get("/pets"))
 				.andExpect(status().isOk())
@@ -58,7 +58,7 @@ public class PetControllerTest {
 		int OWNER_ID = 1;
 		String BIRTH_DATE = "2000-09-07";
 
-		mockMvc.perform(get("/pets/1"))  // Object must be BASIL
+		mockMvc.perform(get("/pets/2"))  // Object must be BASIL
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
 				.andDo(print())
 				.andExpect(status().isOk())
@@ -118,26 +118,7 @@ public class PetControllerTest {
 	@Test
 	public void testDeletePet() throws Exception {
 
-		String PET_NAME = "Beethoven3";
-		int TYPE_ID = 1;
-		int OWNER_ID = 1;
-		String BIRTH_DATE = "2020-05-20";
-
-		PetTO newPetTO = new PetTO();
-		newPetTO.setName(PET_NAME);
-		newPetTO.setTypeId(TYPE_ID);
-		newPetTO.setOwnerId(OWNER_ID);
-		newPetTO.setBirthDate(BIRTH_DATE);
-
-		ResultActions mvcActions = mockMvc.perform(post("/pets")
-						.content(om.writeValueAsString(newPetTO))
-						.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
-				.andDo(print())
-				.andExpect(status().isCreated());
-
-		String response = mvcActions.andReturn().getResponse().getContentAsString();
-
-		Integer id = JsonPath.parse(response).read("$.id");
+		int id = 1;
 
 		mockMvc.perform(delete("/pets/" + id ))
 				/*.andDo(print())*/

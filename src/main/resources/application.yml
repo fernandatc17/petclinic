@@ -11,16 +11,16 @@
 spring:
   datasource :
     url : jdbc:mysql://localhost:3306/PETCLINIC_DB?useSSL=false
-    # Windoows
-    # url : jdbc:mysql://localhost:3306/PETCLINIC_DB?useSSL=false&serverTimezone=UTC
+    #Windoows
+    #url : jdbc:mysql://localhost:3306/PETCLINIC_DB?useSSL=false&serverTimezone=UTC
 
     # for IntelliJ IDEA
     # username : root # admin # root
     # password :      # A$dmin123
 
     # for AWS
-    username :  admin # root
-    password :  A$dmin123
+    username :  root
+    password :
 
 
     platform : mysql
@@ -56,4 +56,4 @@ logging :
   # file : %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%
 
 server :
-  port : 8080
+  port : 8081
